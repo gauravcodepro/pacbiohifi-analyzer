@@ -1,5 +1,5 @@
 # pacbiohifi-analyzer
-a pacbio hifi clipper for the direct clipping from the pacbio hifi reads and generate the clipped reads.
+a pacbiohifi analyzer for the pacbio hifi reads and gives all the information for the pacbiohifi reads from raw to the graph alignments
 
 - complete pacbio hifi analyzer class from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences coded today from start to finish.
 
