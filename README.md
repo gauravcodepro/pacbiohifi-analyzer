@@ -16,6 +16,7 @@ new.chopclipper
 new.plotchips
 new.networkx # adding this evening.
 ```
+- a part of this is also written in Rubex, a parallel implementation of the C++ but less to make it easier for others. 
 
 Gaurav Sablok \
 Academic Staff Member \
