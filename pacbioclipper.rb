@@ -98,7 +98,7 @@ def setClipper(file)
   end
 end
 
-def clipped(internal, external, output)
+def clipped(internal, output)
   if internal and output
     out = File.new(output, "w")
     pattern1 = "ATCTCTCTCTTTTCCTCCTCCTCCGTTGTTGTTGTTGAGAGAGAT"
