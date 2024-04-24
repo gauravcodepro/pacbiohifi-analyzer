@@ -1,7 +1,7 @@
-# pacbiohifi-clipper
+# pacbiohifi-analyzer
 a pacbio hifi clipper for the direct clipping from the pacbio hifi reads and generate the clipped reads.
 
-- complete pacbio hifi analyzer class from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences. 
+- complete pacbio hifi analyzer class from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences coded today from start to finish.
 
 - initiate the class as 
 ```
