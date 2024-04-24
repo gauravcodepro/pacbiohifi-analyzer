@@ -7,16 +7,16 @@ a pacbiohifi analyzer for the pacbio hifi reads and gives all the information fo
 
 - initiate the class as 
 ```
-new = PACBIOHIFICLIPPER.new("samplepacbiohifi.fastq")
-new.makeindex
-new.getLength
-new.getFasta
-new.graphs # adding this evening 
-new.getClippattern # will print the default PacBiohifi clippers
-new.setClipper # you can define a new txt file containing the clipping patterns
-new.chopclipper
-new.plotchips
-new.networkx # adding this evening.
+pacbiohi = PACBIOHIFICLIPPER.new("samplepacbiohifi.fastq")
+pacbiohifi.makeindex
+pacbiohifi.getLength
+pacbiohifi.getFasta
+pacbiohifi.graphs # adding this evening 
+pacbiohifi.getClippattern # will print the default PacBiohifi clippers
+pacbiohifi.setClipper # you can define a new txt file containing the clipping patterns
+pacbiohifi.chopclipper
+pacbiohifi.plotchips
+pacbiohifi.networkx # adding this evening.
 ```
 - a part of this is also written in Rubex, a parallel implementation of the C++ but less to make it easier for others. 
 
