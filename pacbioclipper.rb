@@ -99,6 +99,7 @@ def setClipper(file)
 end
 
 def clipped(internal, output)
+     #####  partial function, implementing a super class to the same. 
   if internal and output
     out = File.new(output, "w")
     pattern1 = "ATCTCTCTCTTTTCCTCCTCCTCCGTTGTTGTTGTTGAGAGAGAT"
@@ -127,4 +128,41 @@ def clipped(internal, output)
     end
     file.close
     puts {"the pacbiohifi file has been written"}
+  end
+
+  def extractspecific(file, output)
+   if file and output 
+     readfile = File.open(file, "r").readlines
+     ids = []
+     for i in 0..readfile.length
+        if readfile[i].to_s.start_with("@")
+          ids.push(readfile[i].to_s.strip)
+        end
+     end
+    indexfile = {}
+    for i in 0..@readpacbiohifi.length
+      if @readpacbiohifi[i].to_s.start_with?("@")
+        indexfile[@readpacbiohifi[i].strip.split[0]] = @readpacbiohifi[i+1].strip
+      end
+   end
+   selected = {}
+   for i in 0..ids.length 
+    for j in 0..indexfile.keys()
+      if ids[i] == indexfile.keys()[j]
+        selected[ids[i]] == indexfile.values()[j]
+      end
+    end 
+   end
+   out = File.new(output, "w")
+    for i in 0..selected.keys()
+       out.write(">"+selected.keys(),"\n", selected.values(), "\n")
+    end
+    outfile.close
+  end
+
+
+     
+
+
+
   end
