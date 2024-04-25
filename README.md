@@ -17,6 +17,7 @@ pacbiohifi.setClipper # you can define a new txt file containing the clipping pa
 pacbiohifi.chopclipper
 pacbiohifi.plotchips
 pacbiohifi.networkx # adding this evening.
+pacbiohifi.extractspecific
 ```
 - a part of this is also written in Rubex, a parallel implementation of the C++ but less to make it easier for others. 
 
