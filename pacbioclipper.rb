@@ -159,10 +159,4 @@ def clipped(internal, output)
     end
     outfile.close
   end
-
-
-     
-
-
-
   end
