@@ -160,3 +160,6 @@ def clipped(internal, output)
     outfile.close
   end
   end
+
+  def pacbioalign(genomefile)
+  
