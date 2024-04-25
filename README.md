@@ -30,7 +30,13 @@ pacbiohifi.extractspecific
 # search for the specific patterns in the PacBiohifi reads 
 # exact match and linear search array 
 pacbiohifi.search
+# align the reads to the genome for the pangenome construction
+pacbiohifi.align # writing now 
+# extract the graph edges 
+pacbiohifi.extract # writing now 
 ```
+- this will be pushed as a gem next week so that you can install directly. A brew file will be also present. 
+
 - a part of this is also written in Rubex, a parallel implementation of the C++ but less to make it easier for others. 
 
 Gaurav Sablok \
