@@ -161,5 +161,34 @@ def clipped(internal, output)
   end
   end
 
-  def pacbioalign(genomefile)
-  
+  def pacbioalign(dirfile,option)
+    unless dirfile
+      puts { "the protein files are needed for the alignment" }
+    end
+    if dirfile and option == "writecommand"
+      readdir = Dir.children(Dir.open(dirfile))
+      genomefile = []
+      readdir.each{ |iter| genomefile.push(iter) if iter.end_with?(".fasta")}
+      proteinfile = []
+      readdir.each { |iter| proteinfile.push(iter) if iter.end_with?(".fa") }
+    writecommand = []
+    for i in 0..proteinfile.length-1
+      writecommand.push("miniprot --gff #{genomefile[i]} #{proteinfile[i]} > #{proteinfile[i]}.gff")
+    end
+    return writecommand
+    end
+    if dirfile and option=="commandrun"
+      readdir = Dir.children(Dir.open(dirfile))
+      genomefile = []
+      readdir.each{ |iter| genomefile.push(iter) if iter.end_with?(".fasta")}
+      proteinfile = []
+      readdir.each { |iter| proteinfile.push(iter) if iter.end_with?(".fa") }
+    writecommand = []
+    for i in 0..proteinfile.length-1
+      writecommand.push("miniprot --gff #{genomefile[i]} #{proteinfile[i]} > #{proteinfile[i]}.gff")
+    end
+    for i in 0..writecommand.length
+      `#{writecommand[i]}`
+    end
+    end
+end
