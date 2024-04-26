@@ -7,33 +7,33 @@ a pacbiohifi analyzer for the pacbio hifi reads and gives all the information fo
 
 - initiate the class as 
 ```
-pacbiohi = PACBIOHIFICLIPPER.new("samplepacbiohifi.fastq")
+- pacbiohi = PACBIOHIFICLIPPER.new("samplepacbiohifi.fastq")
 # will read and make the index for the PacBiohifi
-pacbiohifi.makeindex
+- pacbiohifi.makeindex
 # will give you a tab delimited file for the PacBiohifi
-pacbiohifi.getLength
+- pacbiohifi.getLength
 # will give you the fasta file for the PacBiohifi
-pacbiohifi.getFasta
+- pacbiohifi.getFasta
 # implementing the graph
-pacbiohifi.graphs 
+- pacbiohifi.graphs 
 # will print the default PacBiohifi clippers
-pacbiohifi.getClippattern 
+- pacbiohifi.getClippattern 
 # you can define a new txt file containing the clipping patterns
-pacbiohifi.setClipper 
-pacbiohifi.chopclipper
+- pacbiohifi.setClipper 
+- pacbiohifi.chopclipper
 # plotter for the length and also the chipped length
-pacbiohifi.plotchips
+- pacbiohifi.plotchips
 # plots the graphs as networks and graphql
-pacbiohifi.networkx 
+- pacbiohifi.networkx 
 # this will extract specific sequences if you want and those aligns in the graphs. 
-pacbiohifi.extractspecific 
+- pacbiohifi.extractspecific 
 # search for the specific patterns in the PacBiohifi reads 
 # exact match and linear search array 
-pacbiohifi.search
-# align the reads to the genome for the pangenome construction
-pacbiohifi.align # writing now 
+- pacbiohifi.search
+# align the reads to the genome for the pangenome construction. provide the directory path containing the genome file ending in the .fasta and the protein files ending in the .fa, if the option is writecommand, it will output a shell compatible run script for the high performance computing and if the option is commandrun then it will run the alignment. 
+- pacbiohifi.pacbioalign(dirpath)   
 # extract the graph edges 
-pacbiohifi.extract # writing now 
+- pacbiohifi.extract # writing now 
 ```
 - this will be pushed as a gem next week so that you can install directly. A brew file will be also present. 
 
