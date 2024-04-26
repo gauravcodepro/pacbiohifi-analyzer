@@ -135,7 +135,7 @@ def clipped(internal, output)
      readfile = File.open(file, "r").readlines
      ids = []
      for i in 0..readfile.length
-        if readfile[i].to_s.start_with("@")
+        if readfile[i].to_s.start_with?("@")
           ids.push(readfile[i].to_s.strip)
         end
      end
@@ -145,17 +145,17 @@ def clipped(internal, output)
         indexfile[@readpacbiohifi[i].strip.split[0]] = @readpacbiohifi[i+1].strip
       end
    end
-   selected = {}
+   selected = []
    for i in 0..ids.length 
-    for j in 0..indexfile.keys()
+    for j in 0..indexfile.keys().length
       if ids[i] == indexfile.keys()[j]
-        selected[ids[i]] == indexfile.values()[j]
+        selected.push(ids[i],indexfile.values()[j])
       end
     end 
    end
    out = File.new(output, "w")
-    for i in 0..selected.keys()
-       out.write(">"+selected.keys(),"\n", selected.values(), "\n")
+    for i in 0..selected.length 
+       out.write(">"+selected[i][0],"\n", selected[i][1], "\n")
     end
     outfile.close
   end
@@ -191,4 +191,5 @@ def clipped(internal, output)
       `#{writecommand[i]}`
     end
     end
-end
+  end
+
