@@ -161,7 +161,7 @@ def clipped(internal, output)
   end
   end
 
-  def pacbioalign(dirfile,option)
+  def pacbioalign(dirfile,option, thread)
     unless dirfile
       puts { "the protein files are needed for the alignment" }
     end
@@ -173,7 +173,7 @@ def clipped(internal, output)
       readdir.each { |iter| proteinfile.push(iter) if iter.end_with?(".fa") }
     writecommand = []
     for i in 0..proteinfile.length-1
-      writecommand.push("miniprot --gff #{genomefile[i]} #{proteinfile[i]} > #{proteinfile[i]}.gff")
+      writecommand.push("miniprot --gff -t #{thread} #{genomefile[i]} #{proteinfile[i]} > #{proteinfile[i]}.gff")
     end
     return writecommand
     end
@@ -185,7 +185,7 @@ def clipped(internal, output)
       readdir.each { |iter| proteinfile.push(iter) if iter.end_with?(".fa") }
     writecommand = []
     for i in 0..proteinfile.length-1
-      writecommand.push("miniprot --gff #{genomefile[i]} #{proteinfile[i]} > #{proteinfile[i]}.gff")
+      writecommand.push("miniprot --gff -t #{thread} #{genomefile[i]} #{proteinfile[i]} > #{proteinfile[i]}.gff")
     end
     for i in 0..writecommand.length
       `#{writecommand[i]}`
