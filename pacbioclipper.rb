@@ -38,7 +38,7 @@ def getLength(outfile)
      if @readpacbiohifi[i].to_s.start_with?("@")
        indexfile[@readpacbiohifi[i].strip.split[0]] = @readpacbiohifi[i+1].strip
      end
-   end
+  end
   names = Array.new()
   indexfile.keys().each { |iter| names.push(iter.strip.split[0]) }
   length = Array.new()
@@ -49,7 +49,7 @@ def getLength(outfile)
     file.write(names[i], "\t", finallength[i], "\n")
   }
   file.close
-  end
+end
 
 def getFasta(outfile)
   indexfile = {}
@@ -63,10 +63,9 @@ def getFasta(outfile)
   output = File.new(outfile, "w")
   for i in 0..@readpacbiohifi.length
       output.write(">".to_s+names[i].to_s,"\n",@readpacbiohifi[i+1], "\n")
-    end
+  end
   output.close
-  end
-  end
+end
 
 def getValues(outfile)
   valuestore = {}
@@ -128,7 +127,7 @@ def clipped(internal, output)
     end
     file.close
     puts {"the pacbiohifi file has been written"}
-  end
+end
 
 def graphextract(graphstartnode, graphendnode)
   startnode = File.open(graphstartnode, "r").readlines
@@ -146,11 +145,13 @@ def graphextract(graphstartnode, graphendnode)
   nodesequence = []
   for i in 0..@readpacbiohifi.values.length
       nodesequences.push(@readpacbiohifi.values[i].to_s.slice(startedges[i], endedges[i]).to_s)
+  end
   for i in 0..ids.length
       file.write(">"ids[i],"\n",nodesequence[i], "\n")
   end
   file.close
 end
+
 def extractspecific(file, output)
    if file and output
      readfile = File.open(file, "r").readlines
@@ -165,7 +166,7 @@ def extractspecific(file, output)
       if @readpacbiohifi[i].to_s.start_with?("@")
         indexfile[@readpacbiohifi[i].strip.split[0]] = @readpacbiohifi[i+1].strip
       end
-   end
+    end
    selected = []
    for i in 0..ids.length
     for j in 0..indexfile.keys().length
@@ -180,6 +181,7 @@ def extractspecific(file, output)
     end
     outfile.close
   end
+end
 
 def pacbioalign(dirfile,option, thread)
     unless dirfile
