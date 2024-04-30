@@ -12,7 +12,7 @@ def initialize(pacbiohififastq)
 end
 
 def makeindex(option)
-if option == "names" 
+if option == "names"
 indexfile = {}
 for i in 0..@readpacbiohifi.length
    if @readpacbiohifi[i].to_s.start_with?("@")
@@ -99,39 +99,60 @@ def setClipper(file)
 end
 
 def clipped(internal, output)
-     #####  partial function, implementing a super class to the same. 
   if internal and output
     out = File.new(output, "w")
     pattern1 = "ATCTCTCTCTTTTCCTCCTCCTCCGTTGTTGTTGTTGAGAGAGAT"
     pattern2 = "AAAAAAAAAAAAAAAAAATTAACGGAGGAGGAGGA"
-    pattern1indexstart = []
-    pattern2indexstart = []
-    pattern1indexend = []
-    pattern2indexend = []
+    pattern1start = []
+    pattern2start = []
+    pattern1end = []
+    pattern2end = []
+    ids = []
+    @readpacbiohifi.keys.each { | iter | ids.push(iter.to_s.strip.split[0]) }
+    @readpacbiohifi.values.each { | iter | pattern1start.push(iter.index(pattern1)) }
+    @readpacbiohifi.values.each { | iter | pattern1end.push(iter.index(pattern1).to_i+pattern2.length) }
+    @readpacbiohifi.values.each { | iter | pattern2start.push(iter.index(pattern1)) }
+    @readpacbiohifi.values.each { | iter | pattern2end.push(iter.index(pattern1).to_i+pattern2.length) }
+    length = []
+    @readpacbiohifi.values.each { | iter | length.push(iter.length)}
+    slicestart = []
+    sliceend =[]
     for i in 0..@readpacbiohifi.values.length
-      pattern1indexstart.push(@readpacbiohifi.values[i].index(pattern1))
-      pattern2indexstart.push(@readpacbiohifi.values[i].index(pattern2))
+      slicestart.push(@readpacbiohifi.values[i].to_s.slice(0,pattern1start[i]).to_s)
     end
-    for i in 0..pattern1indexstart.length
-      pattern1indexend.push(pattern1indexstart.to_i+pattern1.length.to_i)
-      pattern2indexend.push(pattern2indexend.to_i+pattern2.length.to_i)
-    end
-    clippedinternal = {}
-    names = Array.new()
-    indexfile.keys().each { | iter | names.push(iter.strip.split) }
     for i in 0..@readpacbiohifi.values.length
-      clippedinternal[names[i]] = @readpacbiohifi[i].to_s.slice!(pattern1indexstart, pattern1indexend)
+      sliceend.push(@readpacbiohifi.values[i].to_s.slice(pattern1end[i],length[i]).to_s)
     end
-    file = File.new(output, "w")
-    for i in 0..clippedinternal.length
-      file.write(clippedinternal.keys[i],"\n", clippedinternal.values[i+1]\n)
+    for i in 0..slicestart.length
+      file.write(">"ids[i],"\n",slicestart[i]+sliceend[i], "\n")
     end
     file.close
     puts {"the pacbiohifi file has been written"}
   end
 
-  def extractspecific(file, output)
-   if file and output 
+def graphextract(graphstartnode, graphendnode)
+  startnode = File.open(graphstartnode, "r").readlines
+  endnode = File.open(graphendnode, "r").readlines
+  startedges = []
+  for i in 0..startnode.length
+   startedges.push(startnode[i].strip)
+  end
+  endedges = []
+  for i in 0..endnode.length
+   endedges.push(endnode[i].strip)
+  end
+  ids = []
+  @readpacbiohifi.keys.each { | iter | ids.push(iter.to_s.strip.split[0])}
+  nodesequence = []
+  for i in 0..@readpacbiohifi.values.length
+      nodesequences.push(@readpacbiohifi.values[i].to_s.slice(startedges[i], endedges[i]).to_s)
+  for i in 0..ids.length
+      file.write(">"ids[i],"\n",nodesequence[i], "\n")
+  end
+  file.close
+end
+def extractspecific(file, output)
+   if file and output
      readfile = File.open(file, "r").readlines
      ids = []
      for i in 0..readfile.length
@@ -146,22 +167,21 @@ def clipped(internal, output)
       end
    end
    selected = []
-   for i in 0..ids.length 
+   for i in 0..ids.length
     for j in 0..indexfile.keys().length
       if ids[i] == indexfile.keys()[j]
         selected.push(ids[i],indexfile.values()[j])
       end
-    end 
+    end
    end
    out = File.new(output, "w")
-    for i in 0..selected.length 
+    for i in 0..selected.length
        out.write(">"+selected[i][0],"\n", selected[i][1], "\n")
     end
     outfile.close
   end
-  end
 
-  def pacbioalign(dirfile,option, thread)
+def pacbioalign(dirfile,option, thread)
     unless dirfile
       puts { "the protein files are needed for the alignment" }
     end
@@ -191,5 +211,5 @@ def clipped(internal, output)
       `#{writecommand[i]}`
     end
     end
-  end
-
+end
+end
