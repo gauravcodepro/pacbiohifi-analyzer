@@ -123,7 +123,7 @@ def clipped(internal, output)
       sliceend.push(@readpacbiohifi.values[i].to_s.slice(pattern1end[i],length[i]).to_s)
     end
     for i in 0..slicestart.length
-      file.write(">"ids[i],"\n",slicestart[i]+sliceend[i], "\n")
+      file.write(">"+ids[i].to_s,"\n",slicestart[i]+sliceend[i], "\n")
     end
     file.close
     puts {"the pacbiohifi file has been written"}
