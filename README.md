@@ -27,9 +27,7 @@ a pacbiohifi analyzer for the pacbio hifi reads and gives all the information fo
 # align the reads to the genome for the pangenome construction. provide the directory path containing the genome file ending in the .fasta and the protein files ending in the .fa, if the option is writecommand, it will output a shell compatible run script for the high performance computing and if the option is commandrun then it will run the alignment. 
 - pacbiohifi.pacbioalign(dirpath)   
 ```
-
-
-Gaurav Sablok \
+Gaurav \
 Academic Staff Member \
 Bioinformatics \
 Institute for Biochemistry and Biology \
