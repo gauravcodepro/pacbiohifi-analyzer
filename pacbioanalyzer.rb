@@ -214,4 +214,44 @@ def pacbioalign(dirfile,option, thread)
     end
     end
 end
+def pafsplicer(alignment, fastafile)
+    readfile = File.open(alignment, "r").readlines
+    query_seq = []
+    query_start = []
+    query_end = []
+    target_seq = []
+    target_start = []
+    target_end = []
+    residue_matching = []
+    strand = []
+    for i in 0..readfile.length
+      query_seq.push(readfile[i].strip.split[0])
+      query_start.push(readfile[i].strip.split[2])
+      query_end.push(readfile[i].strip.split[3])
+      target_seq.push(readfile[i].strip.split[5])
+      target_start.push(readfile[i].strip.split[6])
+      target_end.push(readfile[i].start.split[7])
+      residue_matching.push(readfile[i].strip.split[8])
+      strand.push(readfile[i].strip.split[4])
+    end
+    output = File.new("sortedcolumns.txt", "w")
+    for i in 0..query_start.length
+      output.write(query_start[i], "\t", query_end[i], "\t", query_seq[i], "\t", target_start[i], "\n", target_end[i], "\n", target_seq[i], "\n", residue_matching[i], "\n", strand[i],"\n")
+    end
+    readfasta = File.open(fastafile, "r").readlines
+    fastaseq = {}
+    for i in 0..readfasta.length
+      if readfasta[i].start_with?(">")
+        fastaseq[readfasta[i]] = readfasta[i+1].strip
+      end
+    end
+    names = fastaseq.keys()
+    sequences = fastaseq.values()
+    itersplice = []
+    for i in 0..target_seq.length
+      for j in 0..names.length
+        itersplice.push([sequences[j].to_s.slice(target_start[i], target_end[i])]) if target_seq[i] == names[j]
+      end
+    end
+  end
 end
