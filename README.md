@@ -4,7 +4,7 @@ a pacbiohifi analyzer for the pacbio hifi reads and gives all the information fo
 - complete pacbio hifi analyzer class from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences coded today from start to finish.this uses the exact string match algorithm for the clipping. 
 - a graph edges function is also present. It you want to extract specific nodes and edges from the GFA graphs for the pangenomes. 
 - added a new function pafsplicer for extracting the aligned regions and compairing them to the annotation regions. 
-- adding a new function for the splcie junction reads and the overlapping reads across the sites. 
+- adding a new function for the splice junction reads and the overlapping reads across the sites. 
 
 - initiate the class as 
 ```
