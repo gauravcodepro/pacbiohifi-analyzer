@@ -5,7 +5,7 @@
 - initiate the class as 
 ```
 # class initialize or the gem initialize
-- pacbiohi = PACBIOHIFICLIPPER.new("samplepacbiohifi.fastq")
+- pacbiohi = PACBIOHIFIANALYZER.new("samplepacbiohifi.fastq")
 # will read and make the index for the PacBiohifi
 - pacbiohifi.makeindex
 # will give you a tab delimited file for the PacBiohifi
