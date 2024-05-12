@@ -1,4 +1,4 @@
-class PACBIOHIFICLIPPER
+class PACBIOHIFIANALYZER
   # Author Gaurav 
   # Universitat Potsdam
   # Date: 2024-4-24
