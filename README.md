@@ -1,11 +1,7 @@
 # pacbiohifi-analyzer
-a pacbiohifi analyzer for the pacbio hifi reads and gives all the information for the pacbiohifi reads from raw to the graph alignments
-
-- complete pacbio hifi analyzer class from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences coded today from start to finish.this uses the exact string match algorithm for the clipping. 
-- a graph edges function is also present. It you want to extract specific nodes and edges from the GFA graphs for the pangenomes. 
-- added a new function pafsplicer for extracting the aligned regions and compairing them to the annotation regions. 
-- adding a new function for the splice junction reads and the overlapping reads across the sites. 
-
+- a pacbiohifi analyzer for the pacbio hifi reads and gives all the information for the pacbiohifi reads from raw to the graph alignments. 
+- class functions include from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences, graph edges, splcier function for graphs.
+- graph plotting is enabled using the [ruby-charts](https://github.com/ankane/chartkick)
 - initiate the class as 
 ```
 # class initialize or the gem initialize
@@ -35,6 +31,11 @@ a pacbiohifi analyzer for the pacbio hifi reads and gives all the information fo
 # for each of the reads aligned will extract the corresponding sequences, and if given will match them with the annotated regions.
 -pacbiohifi.pafslicer(alignedfile, fastafile)
 ```
+- gem due to release 2024-5-15 and can be installed as
+```
+gem install pacbio-hifianalyzer
+```
+
 Gaurav \
 Academic Staff Member \
 Bioinformatics \
