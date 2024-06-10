@@ -31,7 +31,6 @@
 # for each of the reads aligned will extract the corresponding sequences, and if given will match them with the annotated regions.
 -pacbiohifi.pafslicer(alignedfile, fastafile)
 ```
-- gem due to release 2024-5-15 and can be installed as
 ```
 gem install pacbio-hifianalyzer
 ```
