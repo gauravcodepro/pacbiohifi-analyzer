@@ -1,4 +1,5 @@
 # pacbiohifi-analyzer
+- **DOCUMENTATION web is up and release date this week**
 - a pacbiohifi analyzer for the pacbio hifi reads and gives all the information for the pacbiohifi reads from raw to the graph alignments. 
 - class functions include from reading, plotting, clipping, reading bam, generating the graphs, extracting the graph sequences, graph edges, splcier function for graphs.
 - graph plotting is enabled using the [ruby-charts](https://github.com/ankane/chartkick)
