@@ -1,0 +1,9 @@
+site_name: pacbiohifi-analyzer
+site_url: https://gauravcodepro.github.io/pacbiohifi-analyzer/
+theme:
+  name: materia
+  color_mode: auto
+  nav_style: dark
+  highlightjs: true
+nav:
+  - Home: index.md
