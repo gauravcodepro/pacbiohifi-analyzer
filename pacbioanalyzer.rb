@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
-class PACBIOHIFIANALYZER
-  # Author Gaurav 
-=======
 #!/usr/bin/ruby
 class PACBIOHIFICLIPPER
   # Author Gaurav Sablok
->>>>>>> Stashed changes
   # Universitat Potsdam
   # Date: 2024-4-24
 
