@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 class PACBIOHIFICLIPPER
   # Author Gaurav Sablok
-  # Universitat Potsdam
   # Date: 2024-4-24
 
 def initialize(pacbiohififastq)
